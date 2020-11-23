@@ -29,46 +29,47 @@ namespace WebViewTest
             this.InitializeComponent();
         }
 
-        private async void MyWebView_WebResourceRequested(WebView sender, WebViewWebResourceRequestedEventArgs args)
+        private  void MyWebView_WebResourceRequested(WebView sender, WebViewWebResourceRequestedEventArgs args)
         {
             if (args.Request.Method.Method == "POST")
             {
                 HttpStreamContent content = (HttpStreamContent)args.Request.Content;
-                var inputStream = await content.ReadAsInputStreamAsync();
-               
               
-                var readStream = inputStream.AsStreamForRead();
+                var contentBuffer = content.ReadAsBufferAsync().GetResults();
+                byte[] buffer = contentBuffer.ToArray();
+
+                //var readStream = inputStream.AsStreamForRead();
                 
-                MemoryStream ms = new MemoryStream();
+                //MemoryStream ms = new MemoryStream();
 
              
 
 
-                byte[] b = null;
-                using (MemoryStream mss = new MemoryStream())
-                {
-                    int count = 0;
+                //byte[] b = null;
+                //using (MemoryStream mss = new MemoryStream())
+                //{
+                //    int count = 0;
 
                    
-                        do
-                        {
-                            try
-                            {
-                                byte[] buf = new byte[1024];
-                                count = readStream.Read(buf, 0, 1024);
-                                mss.Write(buf, 0, count);
-                            }
-                            catch (Exception)
-                            {
+                //        do
+                //        {
+                //            try
+                //            {
+                //                byte[] buf = new byte[1024];
+                //                count = readStream.Read(buf, 0, 1024);
+                //                mss.Write(buf, 0, count);
+                //            }
+                //            catch (Exception)
+                //            {
 
                                
-                            }
+                //            }
                            
-                        } while (readStream.CanRead && count > 0);
+                //        } while (readStream.CanRead && count > 0);
                        
                    
                    
-                }
+                //}
 
             }
 
