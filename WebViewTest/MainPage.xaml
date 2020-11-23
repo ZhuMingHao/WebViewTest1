@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="WebViewTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WebViewTest"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <WebView
+            x:Name="MyWebView"
+            Source="ms-appx-web:///PostPage.html"
+            WebResourceRequested="MyWebView_WebResourceRequested" />
+    </Grid>
+</Page>
